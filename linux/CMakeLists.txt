@@ -43,6 +43,7 @@ target_include_directories(${PLUGIN_NAME} INTERFACE
 target_link_libraries(${PLUGIN_NAME} PRIVATE flutter)
 target_link_libraries(${PLUGIN_NAME} PRIVATE PkgConfig::GTK)
 target_link_libraries(${PLUGIN_NAME} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/libpdfium.so")
+target_link_libraries(${PLUGIN_NAME} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/libheif.a")
 
 # List of absolute paths to libraries that should be bundled with the plugin.
 # This list could contain prebuilt libraries, or libraries created by an
@@ -89,6 +90,7 @@ target_link_libraries(${TEST_RUNNER} PRIVATE flutter)
 target_link_libraries(${TEST_RUNNER} PRIVATE PkgConfig::GTK)
 target_link_libraries(${TEST_RUNNER} PRIVATE gtest_main gmock)
 target_link_libraries(${TEST_RUNNER} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/libpdfium.so")
+target_link_libraries(${TEST_RUNNER} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/libheif.a")
 
 # Enable automatic test discovery.
 include(GoogleTest)
