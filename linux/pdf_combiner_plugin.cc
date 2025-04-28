@@ -17,6 +17,7 @@
 
 #include "include/pdf_combiner/my_file_write.h"
 #include "include/pdf_combiner/save_bitmap_to_png.h"
+#include "include/pdf_combiner/heic_utils.h"
 
 #define PDF_COMBINER_PLUGIN(obj) \
   (G_TYPE_CHECK_INSTANCE_CAST((obj), pdf_combiner_plugin_get_type(), \
@@ -198,6 +199,14 @@ FlMethodResponse* create_pdf_from_multiple_images(FlValue* args) {
     for (const auto& input_path : input_paths) {
         // Load the image and get its dimensions
         int width, height, channels;
+        /*
+        unsigned char* image_data;
+        if (is_heic(input_path)) {
+            image_data = decode_heic_to_rgba(input_path, &width, &height, &channels);
+        } else {
+            image_data = stbi_load(input_path.c_str(), &width, &height, &channels, 4);
+        }
+         */
         unsigned char* image_data = stbi_load(input_path.c_str(), &width, &height, &channels, 4);
         if (!image_data) {
             FPDF_CloseDocument(new_doc);
