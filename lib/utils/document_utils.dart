@@ -1,5 +1,6 @@
 import 'package:file_magic_number/file_magic_number.dart';
 import 'package:path/path.dart' as p;
+import 'dart:io';
 
 /// Utility class for handling document-related checks in a file system environment.
 ///
